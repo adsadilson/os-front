@@ -15,20 +15,21 @@ export class TecnicoReadComponent implements AfterViewInit {
 
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'telefone'];
   dataSource = new MatTableDataSource<Tecnico>(this.tecnicos);
+  
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private service: TecnicoService) { }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
     this.findAll();
   }
 
   findAll():void{
     this.service.findAll().subscribe((resposta)=>{
       this.tecnicos = resposta;
-      console.log(this.tecnicos)
+      this.dataSource = new MatTableDataSource<Tecnico>(this.tecnicos);
+      this.dataSource.paginator = this.paginator;
     })
   }
 
