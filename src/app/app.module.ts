@@ -21,10 +21,11 @@ import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { HeaderComponent } from './views/components/template/header/header.component';
-import { FooterComponent } from './views/components/template/footer/footer.component'
+import { FooterComponent } from './views/components/template/footer/footer.component';
+import { NavComponent } from './views/components/template/nav/nav.component'
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, NavComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
