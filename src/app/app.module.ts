@@ -20,10 +20,11 @@ import { MatTableModule } from '@angular/material/table'
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { HeaderComponent } from './views/components/template/header/header.component'
+import { HeaderComponent } from './views/components/template/header/header.component';
+import { FooterComponent } from './views/components/template/footer/footer.component'
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
