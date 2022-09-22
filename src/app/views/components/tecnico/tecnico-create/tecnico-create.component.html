@@ -1,1 +1,23 @@
-<p>tecnico-create works!</p>
+<form class="form">
+    
+    <h1>Técnicos</h1>
+    
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>CPF</mat-label>
+        <input matInput placeholder="000.000.000-00">
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Telefone</mat-label>
+        <input matInput placeholder="(00)00000-0000">
+      </mat-form-field>
+
+      <button class="mat-elevation-z8" mat-stroked-button color="primary">Salvar</button>
+      <button (click)="cancel()" class="mat-elevation-z8" mat-stroked-button color="warn">Cancelar</button>
+  
+ </form>
