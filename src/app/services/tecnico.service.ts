@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Tecnico } from '../models/tecnico';
@@ -9,12 +10,26 @@ import { Tecnico } from '../models/tecnico';
 })
 export class TecnicoService {
 
-  urlBase: String = environment.baseURL;
+  urlBase: string = environment.baseURL+"/tecnicos";
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private snack: MatSnackBar) { }
 
   findAll():Observable<Tecnico[]>{
-    return this.http.get<Tecnico[]>(this.urlBase+"/tecnicos");
+    return this.http.get<Tecnico[]>(this.urlBase);
+  }
+
+  create(tecnico: Tecnico):Observable<Tecnico>{
+    return this.http.post<Tecnico>(this.urlBase, tecnico);
+  }
+  
+  message(msg: String):void{
+    this.snack.open(`${msg}`, 'OK',{
+      horizontalPosition: 'end',
+      verticalPosition: 'top',
+      duration: 4000,
+    })
   }
   
 }
