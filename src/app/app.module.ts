@@ -19,6 +19,7 @@ import { MatCardModule } from '@angular/material/card'
 import { MatTableModule } from '@angular/material/table'
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { HeaderComponent } from './views/components/template/header/header.component';
 import { FooterComponent } from './views/components/template/footer/footer.component';
@@ -27,10 +28,13 @@ import { HomeComponent } from './views/components/home/home.component';
 import { TecnicoReadComponent } from './views/components/tecnico/tecnico-read/tecnico-read.component';
 import { TecnicoCreateComponent } from './views/components/tecnico/tecnico-create/tecnico-create.component'
 import { CpfPipe } from './pipes/cpf.pipe';
-import { TecnicoUpdateComponent } from './views/components/tecnico/tecnico-update/tecnico-update.component'
+import { TecnicoUpdateComponent } from './views/components/tecnico/tecnico-update/tecnico-update.component';
+import { DialogExclusaoComponent } from './views/components/dialog/dialog-exclusao/dialog-exclusao.component'
+
+
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, NavComponent, HomeComponent, TecnicoReadComponent, TecnicoCreateComponent, CpfPipe, TecnicoUpdateComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, NavComponent, HomeComponent, TecnicoReadComponent, TecnicoCreateComponent, CpfPipe, TecnicoUpdateComponent, DialogExclusaoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -55,6 +59,7 @@ import { TecnicoUpdateComponent } from './views/components/tecnico/tecnico-updat
     MatDatepickerModule,
     MatPaginatorModule,
     MatSnackBarModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

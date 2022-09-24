@@ -1,3 +1,4 @@
+import { NotificationService } from './../../../../shared/notification.service';
 import { TecnicoService } from 'src/app/services/tecnico.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -15,6 +16,7 @@ export class TecnicoUpdateComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private service: TecnicoService,
+    private notificationService: NotificationService,
     private formBuilder: FormBuilder,
   ) {}
   
@@ -42,7 +44,7 @@ export class TecnicoUpdateComponent implements OnInit {
     this.service.update(this.formulario.value).subscribe(
       (resposta) => {
         this.router.navigate(['tecnicos'])
-        this.service.message('Registro atualizado com sucesso...')
+        this.notificationService.success('Técnico atualizado com sucesso...')
       },
       (err) => {
         if (err.error.message.match('já cadastrado')) {

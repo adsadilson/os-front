@@ -24,6 +24,10 @@ export class TecnicoService {
     return this.http.get<Tecnico>(`${this.urlBase}/${id}`);
   }
 
+  delete(id: any):Observable<Tecnico>{
+    return this.http.delete<Tecnico>(`${this.urlBase}/${id}`);
+  }
+
   create(tecnico: Tecnico):Observable<Tecnico>{
     return this.http.post<Tecnico>(this.urlBase, tecnico);
   }
