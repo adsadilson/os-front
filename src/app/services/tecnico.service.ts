@@ -20,8 +20,16 @@ export class TecnicoService {
     return this.http.get<Tecnico[]>(this.urlBase);
   }
 
+  findById(id: any):Observable<Tecnico>{
+    return this.http.get<Tecnico>(`${this.urlBase}/${id}`);
+  }
+
   create(tecnico: Tecnico):Observable<Tecnico>{
     return this.http.post<Tecnico>(this.urlBase, tecnico);
+  }
+
+  update(tecnico: Tecnico):Observable<Tecnico>{
+    return this.http.put<Tecnico>(this.urlBase, tecnico);
   }
   
   message(msg: String):void{

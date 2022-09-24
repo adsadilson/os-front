@@ -1,48 +1,48 @@
-import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { Router } from '@angular/router'
-import { Tecnico } from 'src/app/models/tecnico'
-import { TecnicoService } from 'src/app/services/tecnico.service'
+import { TecnicoService } from 'src/app/services/tecnico.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-tecnico-create',
-  templateUrl: './tecnico-create.component.html',
-  styleUrls: ['./tecnico-create.component.css'],
+  selector: 'app-tecnico-update',
+  templateUrl: './tecnico-update.component.html',
+  styleUrls: ['./tecnico-update.component.css']
 })
-export class TecnicoCreateComponent implements OnInit {
+export class TecnicoUpdateComponent implements OnInit {
   formulario!: FormGroup
 
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private service: TecnicoService,
     private formBuilder: FormBuilder,
   ) {}
+  
 
   ngOnInit(): void {
-    this.formulario = this.formBuilder.group({
-      id: [null],
-      nome: [
-        null,
-        [
+    this.findById(this.activatedRoute.snapshot.paramMap.get('id'));
+  }
+
+  findById(id: any):void{
+    this.service.findById(id).subscribe(resposta=>{
+      this.formulario = this.formBuilder.group({
+        id: resposta.id,
+        nome: [resposta.nome, [
           Validators.required,
           Validators.minLength(3),
           Validators.maxLength(100),
-        ],
-      ],
-      cpf: [null, [Validators.required]],
-      telefone: [null],
+        ]],
+        cpf: [resposta.cpf, [Validators.required]],
+        telefone: resposta.telefone
+      })
     })
   }
 
-  voltar(): void {
-    this.router.navigate(['tecnicos'])
-  }
-
   onSubmit(): void {
-    this.service.create(this.formulario.value).subscribe(
+    this.service.update(this.formulario.value).subscribe(
       (resposta) => {
         this.router.navigate(['tecnicos'])
-        this.service.message('Registro salvo com sucesso...')
+        this.service.message('Registro atualizado com sucesso...')
       },
       (err) => {
         if (err.error.message.match('já cadastrado')) {
@@ -52,6 +52,10 @@ export class TecnicoCreateComponent implements OnInit {
         }
       },
     )
+  }
+
+  voltar(): void {
+    this.router.navigate(['tecnicos'])
   }
 
   resetar(): void {
@@ -76,4 +80,5 @@ export class TecnicoCreateComponent implements OnInit {
     }
     return null
   }
+
 }
