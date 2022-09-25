@@ -32,12 +32,13 @@ import { TecnicoUpdateComponent } from './views/components/tecnico/tecnico-updat
 import { DialogExclusaoComponent } from './views/components/dialog/dialog-exclusao/dialog-exclusao.component';
 import { ClienteReadComponent } from './views/components/cliente/cliente-read/cliente-read.component';
 import { ClienteCreateComponent } from './views/components/cliente/cliente-create/cliente-create.component';
-import { ClienteUpdateComponent } from './views/components/cliente/cliente-update/cliente-update.component'
+import { ClienteUpdateComponent } from './views/components/cliente/cliente-update/cliente-update.component';
+import { OrdemServicoReadComponent } from './views/components/os/ordem-servico-read/ordem-servico-read.component'
 
 
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, NavComponent, HomeComponent, TecnicoReadComponent, TecnicoCreateComponent, CpfPipe, TecnicoUpdateComponent, DialogExclusaoComponent, ClienteReadComponent, ClienteCreateComponent, ClienteUpdateComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, NavComponent, HomeComponent, TecnicoReadComponent, TecnicoCreateComponent, CpfPipe, TecnicoUpdateComponent, DialogExclusaoComponent, ClienteReadComponent, ClienteCreateComponent, ClienteUpdateComponent, OrdemServicoReadComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,30 +1,30 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Cliente } from 'src/app/models/cliente';
-import { ClienteService } from 'src/app/services/cliente.service';
+import { OrdemServico } from 'src/app/models/ordemServico';
+import { OrdemServicoService } from 'src/app/services/ordem-servico.service';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { DialogExclusaoComponent } from '../../dialog/dialog-exclusao/dialog-exclusao.component';
 
 @Component({
-  selector: 'app-cliente-read',
-  templateUrl: './cliente-read.component.html',
-  styleUrls: ['./cliente-read.component.css']
+  selector: 'app-ordem-servico-read',
+  templateUrl: './ordem-servico-read.component.html',
+  styleUrls: ['./ordem-servico-read.component.css']
 })
-export class ClienteReadComponent implements AfterViewInit {
+export class OrdemServicoReadComponent implements AfterViewInit {
 
-  clientes: Cliente[] =[];
+  ordemservicos: OrdemServico[] =[];
 
-  displayedColumns: string[] = ['id', 'nome', 'cpf', 'telefone','acoes'];
-  dataSource = new MatTableDataSource<Cliente>(this.clientes);
+  displayedColumns: string[] = ['tecnico', 'cliente', 'abertura', 'fechamento','prioridade', 'status', 'acoes'];
+  dataSource = new MatTableDataSource<OrdemServico>(this.ordemservicos);
   
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
-    private service: ClienteService,
+    private service: OrdemServicoService,
     private router: Router,
     private notificationService: NotificationService,
     public dialog: MatDialog) { }
@@ -35,20 +35,20 @@ export class ClienteReadComponent implements AfterViewInit {
 
   findAll():void{
     this.service.findAll().subscribe((resposta)=>{
-      this.clientes = resposta;
-      this.dataSource = new MatTableDataSource<Cliente>(this.clientes);
+      this.ordemservicos = resposta;
+      this.dataSource = new MatTableDataSource<OrdemServico>(this.ordemservicos);
       this.dataSource.paginator = this.paginator;
     })
   }
   
   navigateToCreate():void{
-    this.router.navigate(['clientes/create'])
+    this.router.navigate(['ordemservicos/create'])
   }
 
   deleteById(id: any):void{
     this.service.delete(id).subscribe(resposta=>{
       this.findAll();
-      this.notificationService.success(':: Cliente excluido com sucesso...')
+      this.notificationService.success(':: Ordem de Servico excluido com sucesso...')
     },
     (err) => {
       if (err.error.message != null) {
