@@ -29,12 +29,13 @@ import { TecnicoReadComponent } from './views/components/tecnico/tecnico-read/te
 import { TecnicoCreateComponent } from './views/components/tecnico/tecnico-create/tecnico-create.component'
 import { CpfPipe } from './pipes/cpf.pipe';
 import { TecnicoUpdateComponent } from './views/components/tecnico/tecnico-update/tecnico-update.component';
-import { DialogExclusaoComponent } from './views/components/dialog/dialog-exclusao/dialog-exclusao.component'
+import { DialogExclusaoComponent } from './views/components/dialog/dialog-exclusao/dialog-exclusao.component';
+import { ClienteReadComponent } from './views/components/cliente/cliente-read/cliente-read.component'
 
 
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, NavComponent, HomeComponent, TecnicoReadComponent, TecnicoCreateComponent, CpfPipe, TecnicoUpdateComponent, DialogExclusaoComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, NavComponent, HomeComponent, TecnicoReadComponent, TecnicoCreateComponent, CpfPipe, TecnicoUpdateComponent, DialogExclusaoComponent, ClienteReadComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
