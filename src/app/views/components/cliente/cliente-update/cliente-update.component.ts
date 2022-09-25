@@ -1,21 +1,21 @@
-import { NotificationService } from './../../../../shared/notification.service';
-import { TecnicoService } from 'src/app/services/tecnico.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ClienteService } from './../../../../services/cliente.service';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
-  selector: 'app-tecnico-update',
-  templateUrl: './tecnico-update.component.html',
-  styleUrls: ['./tecnico-update.component.css']
+  selector: 'app-cliente-update',
+  templateUrl: './cliente-update.component.html',
+  styleUrls: ['./cliente-update.component.css']
 })
-export class TecnicoUpdateComponent implements OnInit {
+export class ClienteUpdateComponent implements OnInit {
   formulario!: FormGroup
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private service: TecnicoService,
+    private service: ClienteService,
     private notificationService: NotificationService,
     private formBuilder: FormBuilder,
   ) {}
@@ -43,21 +43,21 @@ export class TecnicoUpdateComponent implements OnInit {
   onSubmit(): void {
     this.service.update(this.formulario.value).subscribe(
       (resposta) => {
-        this.router.navigate(['tecnicos'])
-        this.notificationService.success(':: Técnico atualizado com sucesso.')
+        this.router.navigate(['clientes'])
+        this.notificationService.success(':: Cliente atualizado com sucesso.')
       },
       (err) => {
         if (err.error.message.match('já cadastrado')) {
-          this.service.message(err.error.message)
+          this.notificationService.warn(err.error.message)
         }else{
-          this.service.message(err.error.errors[0].message)
+          this.notificationService.warn(err.error.errors[0].message)
         }
       },
     )
   }
 
   voltar(): void {
-    this.router.navigate(['tecnicos'])
+    this.router.navigate(['clientes'])
   }
 
   resetar(): void {
@@ -84,3 +84,4 @@ export class TecnicoUpdateComponent implements OnInit {
   }
 
 }
+

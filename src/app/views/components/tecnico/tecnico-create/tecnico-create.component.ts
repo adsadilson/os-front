@@ -42,7 +42,7 @@ export class TecnicoCreateComponent implements OnInit {
     this.service.create(this.formulario.value).subscribe(
       (resposta) => {
         this.router.navigate(['tecnicos'])
-        this.service.message('Registro salvo com sucesso...')
+        this.service.message(':: Técnico salvo com sucesso.')
       },
       (err) => {
         if (err.error.message.match('já cadastrado')) {
@@ -72,7 +72,7 @@ export class TecnicoCreateComponent implements OnInit {
 
   getErrorMessageCpf() {
     if (this.formulario.get('cpf')!.hasError('required')) {
-      return 'CPF é obrigatorio!'
+      return 'CPF é obrigatorio.'
     }
     return null
   }

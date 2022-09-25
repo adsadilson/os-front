@@ -1,6 +1,6 @@
 <form class="form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
     
-    <h1>Cadastrando técnico</h1>
+    <h1>Atualizando cliente...</h1>
     
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Name</mat-label>
@@ -20,7 +20,7 @@
         <input matInput placeholder="(00)00000-0000" formControlName="telefone">
       </mat-form-field>
 
-      <button [disabled]="!formulario.valid" type="submit" class="mat-elevation-z8" mat-stroked-button color="primary">Salvar</button>
+      <button [disabled]="!formulario.valid" type="submit" class="mat-elevation-z8" mat-stroked-button color="primary">Atualizar</button>
       <button (click)="voltar()" class="mat-elevation-z8" mat-stroked-button color="warn">Cancelar</button>
       
   

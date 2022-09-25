@@ -42,8 +42,8 @@ export class ClienteCreateComponent implements OnInit {
   onSubmit(): void {
     this.service.create(this.formulario.value).subscribe(
       (resposta) => {
-        this.router.navigate(['tecnicos'])
-        this.notificationService.success('Registro salvo com sucesso...')
+        this.router.navigate(['clientes'])
+        this.notificationService.success(':: Cliente salvo com sucesso.')
       },
       (err) => {
         if (err.error.message.match('já cadastrado')) {
@@ -73,7 +73,7 @@ export class ClienteCreateComponent implements OnInit {
 
   getErrorMessageCpf() {
     if (this.formulario.get('cpf')!.hasError('required')) {
-      return 'CPF é obrigatorio!'
+      return 'CPF é obrigatorio.'
     }
     return null
   }
