@@ -10,7 +10,7 @@ import { OrdemServico } from '../models/ordemServico';
 })
 export class OrdemServicoService {
 
-  urlBase: string = environment.baseURL+"/ordem-servicos";
+  urlBase: string = `${environment.baseURL}/ordem-servicos`;
 
   constructor(
     private http: HttpClient,

@@ -10,7 +10,7 @@ import { Tecnico } from '../models/tecnico';
 })
 export class TecnicoService {
 
-  urlBase: string = environment.baseURL+"/tecnicos";
+  urlBase: string = `${environment.baseURL}/tecnicos`;
 
   constructor(
     private http: HttpClient,
