@@ -1,6 +1,6 @@
 <form class="form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
     
-    <h1>Cadastrando cliente</h1>
+    <h1>{{titulo | uppercase}}</h1>
     
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Name</mat-label>
@@ -11,13 +11,13 @@
 
     <mat-form-field class="full-width" appearance="fill">
         <mat-label>CPF</mat-label>
-        <input matInput placeholder="000.000.000-00" formControlName="cpf">
+        <input matInput placeholder="000.000.000-00" mask="000.000.000-00" formControlName="cpf">
         <mat-error *ngIf="formulario.get('cpf')?.invalid">{{getErrorMessageCpf()}}</mat-error>
     </mat-form-field>
 
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Telefone</mat-label>
-        <input matInput placeholder="(00)00000-0000" formControlName="telefone">
+        <input matInput placeholder="(00) 00000-0000" mask="(00) 00000-0000" formControlName="telefone">
       </mat-form-field>
 
       <button [disabled]="!formulario.valid" type="submit" class="mat-elevation-z8" mat-stroked-button color="primary">Salvar</button>

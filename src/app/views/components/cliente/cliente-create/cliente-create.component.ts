@@ -10,6 +10,9 @@ import { ClienteService } from 'src/app/services/cliente.service';
   styleUrls: ['./cliente-create.component.css']
 })
 export class ClienteCreateComponent implements OnInit {
+  
+  titulo = "Cadastrando cliente";
+
   formulario!: FormGroup
 
   constructor(

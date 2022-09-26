@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table'
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
 import { HeaderComponent } from './views/components/template/header/header.component';
 import { FooterComponent } from './views/components/template/footer/footer.component';
@@ -64,6 +65,7 @@ import { OrdemServicoReadComponent } from './views/components/os/ordem-servico-r
     MatPaginatorModule,
     MatSnackBarModule,
     MatDialogModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

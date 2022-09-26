@@ -10,3 +10,19 @@
 button{
     margin-right: 0.3rem;
 }
+
+input {
+    text-transform: uppercase;
+}
+::-webkit-input-placeholder {
+    text-transform: lowercase;
+}
+:-moz-placeholder {
+    text-transform: lowercase;
+}
+::-moz-placeholder {
+    text-transform: lowercase;
+}
+ :-ms-input-placeholder {
+     text-transform: lowercase; 
+}
