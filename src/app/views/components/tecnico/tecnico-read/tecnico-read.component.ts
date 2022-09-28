@@ -1,3 +1,4 @@
+import { MatSort } from '@angular/material/sort';
 import { NotificationService } from './../../../../shared/notification.service';
 import { DialogExclusaoComponent } from '../../dialog/dialog-exclusao/dialog-exclusao.component';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
@@ -22,6 +23,7 @@ export class TecnicoReadComponent implements AfterViewInit {
   
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort
 
   constructor(
     private service: TecnicoService,
@@ -33,11 +35,21 @@ export class TecnicoReadComponent implements AfterViewInit {
     this.findAll();
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
   findAll():void{
     this.service.findAll().subscribe((resposta)=>{
       this.tecnicos = resposta;
       this.dataSource = new MatTableDataSource<Tecnico>(this.tecnicos);
       this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort
     })
   }
   
