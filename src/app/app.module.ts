@@ -35,11 +35,13 @@ import { ClienteReadComponent } from './views/components/cliente/cliente-read/cl
 import { ClienteCreateComponent } from './views/components/cliente/cliente-create/cliente-create.component';
 import { ClienteUpdateComponent } from './views/components/cliente/cliente-update/cliente-update.component';
 import { OrdemServicoReadComponent } from './views/components/os/ordem-servico-read/ordem-servico-read.component'
+import { MatSortModule } from '@angular/material/sort';
+import { OrdemServicoCreateComponent } from './views/components/os/ordem-servico-create/ordem-servico-create.component'
 
 
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, NavComponent, HomeComponent, TecnicoReadComponent, TecnicoCreateComponent, CpfPipe, TecnicoUpdateComponent, DialogExclusaoComponent, ClienteReadComponent, ClienteCreateComponent, ClienteUpdateComponent, OrdemServicoReadComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, NavComponent, HomeComponent, TecnicoReadComponent, TecnicoCreateComponent, CpfPipe, TecnicoUpdateComponent, DialogExclusaoComponent, ClienteReadComponent, ClienteCreateComponent, ClienteUpdateComponent, OrdemServicoReadComponent, OrdemServicoCreateComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -65,7 +67,10 @@ import { OrdemServicoReadComponent } from './views/components/os/ordem-servico-r
     MatPaginatorModule,
     MatSnackBarModule,
     MatDialogModule,
-    NgxMaskModule.forRoot(),
+    MatSortModule,
+    NgxMaskModule.forRoot({
+      dropSpecialCharacters: false,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
