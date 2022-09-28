@@ -14,4 +14,12 @@
 table {
     width: 100%;
 }
-  
+
+.filter{
+    margin-left: 25px;
+    width: 250px;
+}
+
+#inputfiltro{
+    text-transform: uppercase;
+}

@@ -1,32 +1,36 @@
 <div class="create">
     <h1>Lista de clientes</h1>
     <button (click)="navigateToCreate()" class="mat-elevation-z8" mat-stroked-button color="primary">Novo</button>
-  </div>
+    <mat-form-field class="filter" appearance="standard">
+      <mat-label>Filtrar por nome</mat-label>
+      <input id="inputfiltro" matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+</div>
   
   <div class="mat-elevation-z8 container">
-      <table mat-table [dataSource]="dataSource">
+      <table mat-table [dataSource]="dataSource" matSort>
   
         <!-- Position Column -->
         <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
           <td mat-cell *matCellDef="let element"> {{element.id}} </td>
         </ng-container>
     
         <!-- Name Column -->
         <ng-container matColumnDef="nome">
-          <th mat-header-cell *matHeaderCellDef> Nome </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
           <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
         </ng-container>
     
         <!-- Weight Column -->
         <ng-container matColumnDef="cpf">
-          <th mat-header-cell *matHeaderCellDef> CPF </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> CPF </th>
           <td mat-cell *matCellDef="let element"> {{element.cpf}} </td>
         </ng-container>
     
         <!-- Symbol Column -->
         <ng-container matColumnDef="telefone">
-          <th mat-header-cell *matHeaderCellDef> Telefone </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefone </th>
           <td mat-cell *matCellDef="let element"> {{element.telefone}} </td>
         </ng-container>
   
