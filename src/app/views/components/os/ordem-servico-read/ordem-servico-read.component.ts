@@ -1,3 +1,4 @@
+import { MatSort } from '@angular/material/sort';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -22,6 +23,7 @@ export class OrdemServicoReadComponent implements AfterViewInit {
   
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort
 
   constructor(
     private service: OrdemServicoService,
@@ -33,22 +35,32 @@ export class OrdemServicoReadComponent implements AfterViewInit {
     this.findAll();
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
   findAll():void{
     this.service.findAll().subscribe((resposta)=>{
       this.ordemservicos = resposta;
       this.dataSource = new MatTableDataSource<OrdemServico>(this.ordemservicos);
       this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort
     })
   }
   
   navigateToCreate():void{
-    this.router.navigate(['ordemservicos/create'])
+    this.router.navigate(['ordem-servicos/create'])
   }
 
   deleteById(id: any):void{
     this.service.delete(id).subscribe(resposta=>{
       this.findAll();
-      this.notificationService.success(':: Ordem de Servico excluido com sucesso...')
+      this.notificationService.success('Ordem de Servico excluido com sucesso...')
     },
     (err) => {
       if (err.error.message != null) {
@@ -75,6 +87,16 @@ export class OrdemServicoReadComponent implements AfterViewInit {
           this.deleteById(codigo);
         }
     });
+  }
+
+  prioridade(tipo: any){
+    if(tipo =="BAIXO"){
+      return "baixo"
+    }else if(tipo =="MÉDIA"){
+      return "media"
+    }else{
+      return "alta"
+    }
   }
 
 }

@@ -14,4 +14,26 @@
 table {
     width: 100%;
 }
+
+.filter{
+    margin-left: 25px;
+    width: 250px;
+}
+
+#inputfiltro{
+    text-transform: uppercase;
+}
+
+td.baixa{
+    color: green;
+}
+
+td.media{
+    color: rgb(153, 153, 8)
+}
+
+td.alta{
+    color: red;
+}
+
   
