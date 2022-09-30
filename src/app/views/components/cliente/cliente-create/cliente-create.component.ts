@@ -43,6 +43,8 @@ export class ClienteCreateComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.formulario.value.nome = this.formulario.value.nome.toUpperCase()
+
     this.service.create(this.formulario.value).subscribe(
       (resposta) => {
         this.router.navigate(['clientes'])

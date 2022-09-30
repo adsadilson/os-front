@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { Cliente } from 'src/app/models/cliente';
 
 @Component({
   selector: 'app-cliente-update',
@@ -18,8 +19,22 @@ export class ClienteUpdateComponent implements OnInit {
     private service: ClienteService,
     private notificationService: NotificationService,
     private formBuilder: FormBuilder,
-  ) {}
-  
+  ) {
+    this.createForms(); 
+  }
+
+  createForms(){
+    this.formulario = this.formBuilder.group({
+      id: '',
+      nome: ['', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(100),
+      ]],
+      cpf: ['', [Validators.required]],
+      telefone: ''
+    })
+  }  
 
   ngOnInit(): void {
     this.findById(this.activatedRoute.snapshot.paramMap.get('id'));
@@ -27,20 +42,20 @@ export class ClienteUpdateComponent implements OnInit {
 
   findById(id: any):void{
     this.service.findById(id).subscribe(resposta=>{
-      this.formulario = this.formBuilder.group({
-        id: resposta.id,
-        nome: [resposta.nome, [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(100),
-        ]],
-        cpf: [resposta.cpf, [Validators.required]],
-        telefone: resposta.telefone
-      })
+      this.populateFormCliente(resposta);
     })
+  }
+  
+  private populateFormCliente(resposta: Cliente) {
+    this.formulario.controls['nome'].setValue(resposta.nome);
+    this.formulario.controls['cpf'].setValue(resposta.cpf);
+    this.formulario.controls['id'].setValue(resposta.id);
+    this.formulario.controls['telefone'].setValue(resposta.telefone);
   }
 
   onSubmit(): void {
+    this.formulario.value.nome = this.formulario.value.nome.toUpperCase()
+    
     this.service.update(this.formulario.value).subscribe(
       (resposta) => {
         this.router.navigate(['clientes'])
