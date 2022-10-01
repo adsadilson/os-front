@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>Cadastrando ordem serviço</h1>
+<div mat-dialog-content>
+    <form class="form" [formGroup]="formulario">
+      
+      <mat-form-field color="accent">
+        <mat-label>Data Abetura</mat-label>
+          <input matInput [matDatepicker]="dp" formControlName="dataAbertura" name="dataAbertura">
+          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Cliente</mat-label>
+        <input type="text"
+               placeholder="Fulano"
+               matInput
+               formControlName="cliente" name="cliente"
+               [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let cliente of filterClientes" [value]="cliente">
+            {{cliente.nome}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+     
+      <mat-form-field class="full-width">
+        <mat-label>Obersevações:</mat-label>
+        <textarea matInput formControlName="observacoes" name="observacoes"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Prioridade</mat-label>
+        <mat-select formControlName="prioridade" name="prioridade">
+          <mat-option *ngFor="let pr of prioridades" [value]="pr">
+            {{pr.descricao}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+    </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button color="primary" (click)="createOrdemServico()" cdkFocusInitial 
+      [mat-dialog-close]="true" >Salvar
+  </button>
+  <button mat-button  [mat-dialog-close]="false" >Cancelar</button>
+</div>
