@@ -1,3 +1,4 @@
+import { MaterialModule } from './shared/material/material.module';
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 
@@ -7,20 +8,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
-import { MatSelectModule } from '@angular/material/select'
-import { MatInputModule } from '@angular/material/input'
 import { MatDatepickerModule } from '@angular/material/datepicker'
-import { MatToolbarModule } from '@angular/material/toolbar'
-import { MatSidenavModule } from '@angular/material/sidenav'
-import { MatIconModule } from '@angular/material/icon'
-import { MatButtonModule } from '@angular/material/button'
-import { MatListModule } from '@angular/material/list'
-import { MatCardModule } from '@angular/material/card'
-import { MatTableModule } from '@angular/material/table'
-import { MatPaginatorModule } from '@angular/material/paginator'
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatDialogModule } from '@angular/material/dialog';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MAT_DATE_LOCALE } from '@angular/material/core'
+import { UpperCasePipe } from '@angular/common'
+import { NgxMaskModule } from 'ngx-mask'
+
 
 import { HeaderComponent } from './views/components/template/header/header.component';
 import { FooterComponent } from './views/components/template/footer/footer.component';
@@ -35,18 +28,20 @@ import { ClienteReadComponent } from './views/components/cliente/cliente-read/cl
 import { ClienteCreateComponent } from './views/components/cliente/cliente-create/cliente-create.component';
 import { ClienteUpdateComponent } from './views/components/cliente/cliente-update/cliente-update.component';
 import { OrdemServicoReadComponent } from './views/components/os/ordem-servico-read/ordem-servico-read.component'
-import { MatSortModule } from '@angular/material/sort';
-import { OrdemServicoCreateComponent } from './views/components/os/ordem-servico-create/ordem-servico-create.component'
+import { OrdemServicoDialogCreateComponent } from './views/components/os/ordem-servico-dialog-create/ordem-servico-dialog-create.component';
+
+import { FilterNamePipe } from './pipes/filter-name.pipe'
+
 
 
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, NavComponent, HomeComponent, TecnicoReadComponent, TecnicoCreateComponent, CpfPipe, TecnicoUpdateComponent, DialogExclusaoComponent, ClienteReadComponent, ClienteCreateComponent, ClienteUpdateComponent, OrdemServicoReadComponent, OrdemServicoCreateComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, NavComponent, HomeComponent, TecnicoReadComponent, TecnicoCreateComponent, CpfPipe, 
+    TecnicoUpdateComponent, DialogExclusaoComponent, ClienteReadComponent, ClienteCreateComponent, ClienteUpdateComponent, OrdemServicoReadComponent, OrdemServicoDialogCreateComponent, FilterNamePipe],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
@@ -54,25 +49,14 @@ import { OrdemServicoCreateComponent } from './views/components/os/ordem-servico
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatButtonModule,
-    MatListModule,
-    MatCardModule,
-    MatTableModule,
-    MatSelectModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatPaginatorModule,
-    MatSnackBarModule,
-    MatDialogModule,
-    MatSortModule,
+    MaterialModule,
+    MatAutocompleteModule,
     NgxMaskModule.forRoot({
       dropSpecialCharacters: false,
     }),
   ],
-  providers: [],
+  providers: [MatDatepickerModule, UpperCasePipe,
+    { provide: MAT_DATE_LOCALE, useValue: 'pt' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
