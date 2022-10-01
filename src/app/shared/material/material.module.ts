@@ -1,3 +1,4 @@
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -58,6 +59,7 @@ import { MatNativeDateModule } from '@angular/material/core';
         MatTableModule,
         MatPaginatorModule,
         MatSortModule,
+        MatAutocompleteModule,
         MatFormFieldModule,
         MatDatepickerModule,
         MatNativeDateModule
@@ -90,6 +92,7 @@ import { MatNativeDateModule } from '@angular/material/core';
         MatTableModule,
         MatPaginatorModule,
         MatSortModule,
+        MatAutocompleteModule,
         MatFormFieldModule,
         MatDatepickerModule,
         MatNativeDateModule

@@ -6,10 +6,8 @@ import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
-import { MatDatepickerModule } from '@angular/material/datepicker'
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MAT_DATE_LOCALE } from '@angular/material/core'
 import { UpperCasePipe } from '@angular/common'
 import { NgxMaskModule } from 'ngx-mask'
@@ -30,19 +28,14 @@ import { ClienteUpdateComponent } from './views/components/cliente/cliente-updat
 import { OrdemServicoReadComponent } from './views/components/os/ordem-servico-read/ordem-servico-read.component'
 import { OrdemServicoDialogCreateComponent } from './views/components/os/ordem-servico-dialog-create/ordem-servico-dialog-create.component';
 
-import { FilterNamePipe } from './pipes/filter-name.pipe'
-
-
-
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent, NavComponent, HomeComponent, TecnicoReadComponent, TecnicoCreateComponent, CpfPipe, 
-    TecnicoUpdateComponent, DialogExclusaoComponent, ClienteReadComponent, ClienteCreateComponent, ClienteUpdateComponent, OrdemServicoReadComponent, OrdemServicoDialogCreateComponent, FilterNamePipe],
+    TecnicoUpdateComponent, DialogExclusaoComponent, ClienteReadComponent, ClienteCreateComponent, ClienteUpdateComponent, OrdemServicoReadComponent, OrdemServicoDialogCreateComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -50,12 +43,11 @@ import { FilterNamePipe } from './pipes/filter-name.pipe'
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatAutocompleteModule,
     NgxMaskModule.forRoot({
       dropSpecialCharacters: false,
     }),
   ],
-  providers: [MatDatepickerModule, UpperCasePipe,
+  providers: [UpperCasePipe,
     { provide: MAT_DATE_LOCALE, useValue: 'pt' }],
   bootstrap: [AppComponent],
 })

@@ -1,3 +1,4 @@
+import { OrdemServicoDialogCreateComponent } from './../ordem-servico-dialog-create/ordem-servico-dialog-create.component';
 import { MatSort } from '@angular/material/sort';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -97,6 +98,23 @@ export class OrdemServicoReadComponent implements AfterViewInit {
     }else{
       return "alta"
     }
+  }
+
+  openDialogCreate(): void {
+    let dialogRef = this.dialog.open(OrdemServicoDialogCreateComponent, {
+      width: '450px',
+      disableClose: true,
+      position: {top: "7%"},
+      data: {
+        
+      },
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+        if(result){
+          this.findAll()
+        }
+    });
   }
 
 }
