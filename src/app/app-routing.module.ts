@@ -10,40 +10,14 @@ import { ClienteReadComponent } from './views/components/cliente/cliente-read/cl
 import { OrdemServicoReadComponent } from './views/components/os/ordem-servico-read/ordem-servico-read.component';
 
 const routes: Routes = [
-  {
-    path: "",
-    component: HomeComponent
-  },
-  {
-    path: "tecnicos",
-    component: TecnicoReadComponent
-  },
-  {
-    path: "tecnicos/create",
-    component: TecnicoCreateComponent
-  },
-  {
-    path: "tecnicos/update/:id",
-    component: TecnicoUpdateComponent
-  }
-  ,
-  {
-    path: "clientes",
-    component: ClienteReadComponent
-  },
-  {
-    path: "clientes/create",
-    component: ClienteCreateComponent
-  },
-  {
-    path: "clientes/update/:id",
-    component: ClienteUpdateComponent
-  }
-  ,
-  {
-    path: "ordem-servicos",
-    component: OrdemServicoReadComponent
-  }
+  { path: "", component: HomeComponent},
+  { path: "tecnicos", component: TecnicoReadComponent},
+  { path: "tecnicos/create", component: TecnicoCreateComponent},
+  { path: "tecnicos/update/:id", component: TecnicoUpdateComponent},
+  { path: "clientes", component: ClienteReadComponent},
+  { path: "clientes/create", component: ClienteCreateComponent},
+  { path: "clientes/update/:id", component: ClienteUpdateComponent},
+  { path: "ordem-servicos", component: OrdemServicoReadComponent}
 ];
 
 @NgModule({
