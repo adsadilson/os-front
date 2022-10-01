@@ -1,3 +1,4 @@
+import { UpperCasePipe } from '@angular/common'
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
@@ -14,6 +15,7 @@ export class TecnicoCreateComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private upperCasePipe: UpperCasePipe,
     private service: TecnicoService,
     private formBuilder: FormBuilder,
   ) {}
@@ -39,6 +41,7 @@ export class TecnicoCreateComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.formulario.value.nome = this.upperCasePipe.transform(this.formulario.value.nome)
     this.service.create(this.formulario.value).subscribe(
       (resposta) => {
         this.router.navigate(['tecnicos'])

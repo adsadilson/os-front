@@ -1,3 +1,4 @@
+import { UpperCasePipe } from '@angular/common';
 import { NotificationService } from './../../../../shared/notification.service';
 import { TecnicoService } from 'src/app/services/tecnico.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -41,6 +42,7 @@ export class TecnicoUpdateComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.formulario.value.nome = this.formulario.value.nome.toUpperCase()
     this.service.update(this.formulario.value).subscribe(
       (resposta) => {
         this.router.navigate(['tecnicos'])
