@@ -1,3 +1,4 @@
+import { ValidarCamposService } from './../../../../shared/validar-campos.service';
 import { NotificationService } from './../../../../shared/notification.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -16,6 +17,7 @@ export class ClienteCreateComponent implements OnInit {
   formulario!: FormGroup
 
   constructor(
+    public validarCampo: ValidarCamposService,
     private router: Router,
     private service: ClienteService,
     private notificationService: NotificationService,
@@ -33,7 +35,7 @@ export class ClienteCreateComponent implements OnInit {
           Validators.maxLength(100),
         ],
       ],
-      cpf: [null, [Validators.required]],
+      cpf: [null, [Validators.required, Validators.minLength(11)]],
       telefone: [null],
     })
   }
