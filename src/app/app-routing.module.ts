@@ -8,8 +8,10 @@ import { TecnicoCreateComponent } from './views/components/tecnico/tecnico-creat
 import { TecnicoReadComponent } from './views/components/tecnico/tecnico-read/tecnico-read.component';
 import { ClienteReadComponent } from './views/components/cliente/cliente-read/cliente-read.component';
 import { OrdemServicoReadComponent } from './views/components/os/ordem-servico-read/ordem-servico-read.component';
+import { LoginComponent } from './views/components/template/login/login/login.component';
 
 const routes: Routes = [
+  { path: "login", component:LoginComponent},
   { path: "", component: HomeComponent},
   { path: "tecnicos", component: TecnicoReadComponent},
   { path: "tecnicos/create", component: TecnicoCreateComponent},

@@ -4,7 +4,11 @@
       
       <mat-form-field color="accent">
         <mat-label>Data Abetura</mat-label>
-          <input matInput [matDatepicker]="dp" formControlName="dataAbertura" name="dataAbertura">
+          <input matInput [matDatepicker]="dp" 
+          formControlName="dataAbertura"
+          readonly="true"
+          (click)="dp.open()"
+          name="dataAbertura">
           <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
         <mat-datepicker #dp></mat-datepicker>
       </mat-form-field>
