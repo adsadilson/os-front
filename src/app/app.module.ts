@@ -1,3 +1,4 @@
+import { AuthInterceptor, AuthInterceptorProvider } from './auth/auth.interceptor';
 import { MaterialModule } from './shared/material/material.module';
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
@@ -7,7 +8,7 @@ import { AppComponent } from './app.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { ReactiveFormsModule } from '@angular/forms'
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { MAT_DATE_LOCALE } from '@angular/material/core'
 import { UpperCasePipe } from '@angular/common'
 import { NgxMaskModule } from 'ngx-mask'
@@ -53,10 +54,12 @@ import { ToastrModule } from 'ngx-toastr';
       timeOut: 3000,
       closeButton: true,
       progressBar: true,
-    })
+    }),
+    
   ],
-  providers: [UpperCasePipe,
-    { provide: MAT_DATE_LOCALE, useValue: 'pt' }],
+  providers: [UpperCasePipe,{ provide: MAT_DATE_LOCALE, useValue: 'pt' }, AuthInterceptorProvider],
+
+  
   bootstrap: [AppComponent],
 })
 export class AppModule {}

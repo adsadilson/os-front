@@ -34,7 +34,7 @@ export class LoginAngularComponent implements OnInit {
     this.formulario.value.email = this.formulario.value.email
     this.service.authentication(this.formulario.value).subscribe(resposta =>{
     this.service.successFulLogin(resposta.headers.get('Authorization')!);
-    this.router.navigate(['']);
+    this.router.navigate(['/home']);
     }, () => {
       this.toastr.error('Usuário e/ou senha inválidos!')
     })
