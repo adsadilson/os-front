@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LowerCasePipe, UpperCasePipe } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-angular',
@@ -15,6 +16,7 @@ export class LoginAngularComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private toastr: ToastrService,
     private router: Router,
     private service: TecnicoService,) { }
 
@@ -28,8 +30,8 @@ export class LoginAngularComponent implements OnInit {
 
   onSubmit(): void {
     this.formulario.value.email = this.formulario.value.email
-   
-  }
+    this.toastr.error('Usuário ou senha inválido!')
+  } 
 
   getErrorMessageEmail() {
     if (this.formulario.get('email')!.errors?.['required']) {

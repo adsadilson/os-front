@@ -29,6 +29,7 @@ import { OrdemServicoReadComponent } from './views/components/os/ordem-servico-r
 import { OrdemServicoDialogCreateComponent } from './views/components/os/ordem-servico-dialog-create/ordem-servico-dialog-create.component';
 import { LoginComponent } from './views/components/template/login/login/login.component';
 import { LoginAngularComponent } from './views/components/template/login/login-angular/login-angular.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -48,6 +49,11 @@ import { LoginAngularComponent } from './views/components/template/login/login-a
     NgxMaskModule.forRoot({
       dropSpecialCharacters: false,
     }),
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      closeButton: true,
+      progressBar: true,
+    })
   ],
   providers: [UpperCasePipe,
     { provide: MAT_DATE_LOCALE, useValue: 'pt' }],
