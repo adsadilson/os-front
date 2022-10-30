@@ -28,11 +28,12 @@ import { ClienteUpdateComponent } from './views/components/cliente/cliente-updat
 import { OrdemServicoReadComponent } from './views/components/os/ordem-servico-read/ordem-servico-read.component'
 import { OrdemServicoDialogCreateComponent } from './views/components/os/ordem-servico-dialog-create/ordem-servico-dialog-create.component';
 import { LoginComponent } from './views/components/template/login/login/login.component';
+import { LoginAngularComponent } from './views/components/template/login/login-angular/login-angular.component';
 
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent, NavComponent, HomeComponent, TecnicoReadComponent, TecnicoCreateComponent, CpfPipe, 
-    TecnicoUpdateComponent, DialogExclusaoComponent, ClienteReadComponent, ClienteCreateComponent, ClienteUpdateComponent, OrdemServicoReadComponent, OrdemServicoDialogCreateComponent, LoginComponent],
+    TecnicoUpdateComponent, DialogExclusaoComponent, ClienteReadComponent, ClienteCreateComponent, ClienteUpdateComponent, OrdemServicoReadComponent, OrdemServicoDialogCreateComponent, LoginComponent, LoginAngularComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

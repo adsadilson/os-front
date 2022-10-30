@@ -1,3 +1,5 @@
+import { LoginAngularComponent } from './views/components/template/login/login-angular/login-angular.component';
+import { NavComponent } from './views/components/template/nav/nav.component';
 import { ClienteUpdateComponent } from './views/components/cliente/cliente-update/cliente-update.component';
 import { ClienteCreateComponent } from './views/components/cliente/cliente-create/cliente-create.component';
 import { TecnicoUpdateComponent } from './views/components/tecnico/tecnico-update/tecnico-update.component';
@@ -12,14 +14,19 @@ import { LoginComponent } from './views/components/template/login/login/login.co
 
 const routes: Routes = [
   { path: "login", component:LoginComponent},
-  { path: "", component: HomeComponent},
-  { path: "tecnicos", component: TecnicoReadComponent},
-  { path: "tecnicos/create", component: TecnicoCreateComponent},
-  { path: "tecnicos/update/:id", component: TecnicoUpdateComponent},
-  { path: "clientes", component: ClienteReadComponent},
-  { path: "clientes/create", component: ClienteCreateComponent},
-  { path: "clientes/update/:id", component: ClienteUpdateComponent},
-  { path: "ordem-servicos", component: OrdemServicoReadComponent}
+  { path: "login-2", component:LoginAngularComponent},
+  { path: "", component: NavComponent, children:[
+      { path: "home", component: HomeComponent},
+      { path: "tecnicos", component: TecnicoReadComponent},
+      { path: "tecnicos/create", component: TecnicoCreateComponent},
+      { path: "tecnicos/update/:id", component: TecnicoUpdateComponent},
+      { path: "clientes", component: ClienteReadComponent},
+      { path: "clientes/create", component: ClienteCreateComponent},
+      { path: "clientes/update/:id", component: ClienteUpdateComponent},
+      { path: "ordem-servicos", component: OrdemServicoReadComponent}
+    ] 
+  },
+  
 ];
 
 @NgModule({
