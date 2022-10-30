@@ -1,3 +1,7 @@
+import { TecnicoService } from './../../../../../services/tecnico.service';
+import { Router } from '@angular/router';
+import { LowerCasePipe, UpperCasePipe } from '@angular/common';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +11,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginAngularComponent implements OnInit {
 
-  constructor() { }
+  formulario!: FormGroup
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private service: TecnicoService,) { }
 
   ngOnInit(): void {
+    this.formulario = this.formBuilder.group({
+      email: [null, Validators.required],
+      senha: [null, [ Validators.required, Validators.minLength(3)]],
+    })
+  }
+
+
+  onSubmit(): void {
+    this.formulario.value.email = this.formulario.value.email
+   
+  }
+
+  getErrorMessageEmail() {
+    if (this.formulario.get('email')!.errors?.['required']) {
+      return 'E-mail é obrigatorio.'
+    }
+      return null
+  }
+
+  getErrorMessageSenha() {
+    if (this.formulario.get('senha')!.errors?.['required']) {
+      return 'Senha é obrigatorio.'
+    }
+    if (this.formulario.get('senha')!.errors?.['minlength']) {
+      return 'Senha deve ter no min 3 caracteres.'
+    }
+      return null
   }
 
 }
