@@ -1,3 +1,4 @@
+import { AuthService } from './../../../../../services/auth.service';
 import { TecnicoService } from './../../../../../services/tecnico.service';
 import { Router } from '@angular/router';
 import { LowerCasePipe, UpperCasePipe } from '@angular/common';
@@ -17,8 +18,9 @@ export class LoginAngularComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private router: Router,
-    private service: TecnicoService,) { }
+    private service: AuthService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
@@ -30,7 +32,13 @@ export class LoginAngularComponent implements OnInit {
 
   onSubmit(): void {
     this.formulario.value.email = this.formulario.value.email
-    this.toastr.error('Usuário ou senha inválido!')
+    this.service.authentication(this.formulario.value).subscribe(resposta =>{
+    this.service.successFulLogin(resposta.headers.get('Authorization')!);
+    this.router.navigate(['']);
+    }, () => {
+      this.toastr.error('Usuário e/ou senha inválidos!')
+    })
+    
   } 
 
   getErrorMessageEmail() {
