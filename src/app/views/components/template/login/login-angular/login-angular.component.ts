@@ -31,7 +31,7 @@ export class LoginAngularComponent implements OnInit {
 
 
   onSubmit(): void {
-    this.formulario.value.email = this.formulario.value.email
+    this.formulario.value.email = this.formulario.value.email.toLowerCase()
     this.service.authentication(this.formulario.value).subscribe(resposta =>{
     this.service.successFulLogin(resposta.headers.get('Authorization')!);
     this.router.navigate(['/home']);
