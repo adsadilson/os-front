@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { MatSort } from '@angular/material/sort'
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
@@ -27,7 +28,7 @@ export class ClienteReadComponent implements AfterViewInit {
   constructor(
     private service: ClienteService,
     private router: Router,
-    private notificationService: NotificationService,
+    private toastr: ToastrService,
     public dialog: MatDialog,
   ) {}
 
@@ -61,13 +62,13 @@ export class ClienteReadComponent implements AfterViewInit {
     this.service.delete(id).subscribe(
       (resposta) => {
         this.findAll()
-        this.notificationService.success(':: Cliente excluido com sucesso...')
+        this.toastr.success('Cliente excluido com sucesso...','Exclusão de Cliente')
       },
       (err) => {
         if (err.error.message != null) {
-          this.notificationService.warn(err.error.message)
+          this.toastr.warning(err.error.message)
         } else {
-          this.notificationService.warn(err.error.errors[0].message)
+          this.toastr.warning(err.error.errors[0].message)
         }
       },
     )
