@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { ClienteService } from './../../../../services/cliente.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -17,7 +18,7 @@ export class ClienteUpdateComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private service: ClienteService,
-    private notificationService: NotificationService,
+    private toastr: ToastrService,
     private formBuilder: FormBuilder,
   ) {
     this.createForms(); 
@@ -59,13 +60,13 @@ export class ClienteUpdateComponent implements OnInit {
     this.service.update(this.formulario.value).subscribe(
       (resposta) => {
         this.router.navigate(['clientes'])
-        this.notificationService.success(':: Cliente atualizado com sucesso.')
+        this.toastr.success('Cliente atualizado com sucesso.','Atualização de Cliente')
       },
       (err) => {
         if (err.error.message.match('já cadastrado')) {
-          this.notificationService.warn(err.error.message)
+          this.toastr.warning(err.error.message)
         }else{
-          this.notificationService.warn(err.error.errors[0].message)
+          this.toastr.warning(err.error.errors[0].message)
         }
       },
     )
