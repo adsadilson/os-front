@@ -1,5 +1,5 @@
+import { ToastrService } from 'ngx-toastr';
 import { ValidarCamposService } from './../../../../shared/validar-campos.service';
-import { NotificationService } from './../../../../shared/notification.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -20,7 +20,7 @@ export class ClienteCreateComponent implements OnInit {
     public validarCampo: ValidarCamposService,
     private router: Router,
     private service: ClienteService,
-    private notificationService: NotificationService,
+    private toastr: ToastrService,
     private formBuilder: FormBuilder,
   ) {}
 
@@ -37,6 +37,8 @@ export class ClienteCreateComponent implements OnInit {
       ],
       cpf: [null, [Validators.required, Validators.minLength(11)]],
       telefone: [null],
+      email: [null, [Validators.required, Validators.email]],
+      senha: [null, [Validators.required, Validators.minLength(3)]],
     })
   }
 
@@ -46,17 +48,18 @@ export class ClienteCreateComponent implements OnInit {
 
   onSubmit(): void {
     this.formulario.value.nome = this.formulario.value.nome.toUpperCase()
+    this.formulario.value.email = this.formulario.value.email.toLowerCase()
 
     this.service.create(this.formulario.value).subscribe(
       (resposta) => {
         this.router.navigate(['clientes'])
-        this.notificationService.success(':: Cliente salvo com sucesso.')
+        this.toastr.success('Cliente salvo com sucesso.','Inclusão de Cliente')
       },
       (err) => {
         if (err.error.message.match('já cadastrado')) {
-          this.notificationService.warn(err.error.message)
+          this.toastr.warning(err.error.message)
         }else{
-          this.notificationService.warn(err.error.errors[0].message)
+          this.toastr.warning(err.error.errors[0].message)
         }
       },
     )
@@ -83,5 +86,22 @@ export class ClienteCreateComponent implements OnInit {
       return 'CPF é obrigatorio.'
     }
     return null
+  }
+
+  getErrorMessageEmail() {
+    if (this.formulario.get('email')!.hasError('required')) {
+      return 'E-mail é obrigatorio.'
+    }
+      return null
+  }
+
+  getErrorMessageSenha() {
+    if (this.formulario.get('senha')!.hasError('required')) {
+      return 'Senha é obrigatorio.'
+    }
+    if (this.formulario.get('senha')!.errors?.['minlength']) {
+      return 'Senha deve ter no min 6 caracteres e max 11.'
+    }
+      return null
   }
 }
