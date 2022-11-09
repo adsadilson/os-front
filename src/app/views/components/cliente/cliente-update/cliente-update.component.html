@@ -20,6 +20,21 @@
         <input matInput placeholder="(00)00000-0000" formControlName="telefone">
       </mat-form-field>
 
+      <mat-form-field class="full-width">
+        <mat-label>E-mail</mat-label>
+        <input class="email"  type="email" matInput placeholder="fulano@apssystem.com" formControlName="email">
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error *ngIf="formulario.get('email')?.invalid">{{getErrorMessageEmail()}}</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="full-width">
+        <mat-label>Senha</mat-label>
+        <input type="password" matInput placeholder="fulano@apssystem.com" formControlName="senha">
+        <mat-icon matSuffix>password</mat-icon>
+        <mat-error *ngIf="formulario.get('senha')?.invalid">{{getErrorMessageSenha()}}</mat-error>
+      </mat-form-field>
+
       <button [disabled]="!formulario.valid" type="submit" class="mat-elevation-z8" mat-stroked-button color="primary">Atualizar</button>
       <button (click)="voltar()" class="mat-elevation-z8" mat-stroked-button color="warn">Cancelar</button>
       

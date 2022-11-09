@@ -31,11 +31,14 @@ import { OrdemServicoDialogCreateComponent } from './views/components/os/ordem-s
 import { LoginComponent } from './views/components/template/login/login/login.component';
 import { LoginAngularComponent } from './views/components/template/login/login-angular/login-angular.component';
 import { ToastrModule } from 'ngx-toastr';
+import { SidenavComponent } from './views/components/template/sidenav/sidenav/sidenav.component';
+import { BodyComponent } from './views/components/template/body/body.component';
+
 
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent, NavComponent, HomeComponent, TecnicoReadComponent, TecnicoCreateComponent, CpfPipe, 
-    TecnicoUpdateComponent, DialogExclusaoComponent, ClienteReadComponent, ClienteCreateComponent, ClienteUpdateComponent, OrdemServicoReadComponent, OrdemServicoDialogCreateComponent, LoginComponent, LoginAngularComponent],
+    TecnicoUpdateComponent, DialogExclusaoComponent, ClienteReadComponent, ClienteCreateComponent, ClienteUpdateComponent, OrdemServicoReadComponent, OrdemServicoDialogCreateComponent, LoginComponent, LoginAngularComponent, SidenavComponent, BodyComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -55,6 +58,7 @@ import { ToastrModule } from 'ngx-toastr';
       closeButton: true,
       progressBar: true,
     }),
+    
     
   ],
   providers: [UpperCasePipe,{ provide: MAT_DATE_LOCALE, useValue: 'pt' }, AuthInterceptorProvider],

@@ -38,7 +38,7 @@ export class ClienteCreateComponent implements OnInit {
       cpf: [null, [Validators.required, Validators.minLength(11)]],
       telefone: [null],
       email: [null, [Validators.required, Validators.email]],
-      senha: [null, [Validators.required, Validators.minLength(3)]],
+      senha: [null, [Validators.required, Validators.minLength(6)]],
     })
   }
 

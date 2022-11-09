@@ -33,7 +33,9 @@ export class ClienteUpdateComponent implements OnInit {
         Validators.maxLength(100),
       ]],
       cpf: ['', [Validators.required]],
-      telefone: ''
+      telefone: '',
+      email: [null, [Validators.required, Validators.email]],
+      senha: [null, [Validators.required, Validators.minLength(6)]],
     })
   }  
 
@@ -52,11 +54,14 @@ export class ClienteUpdateComponent implements OnInit {
     this.formulario.controls['cpf'].setValue(resposta.cpf);
     this.formulario.controls['id'].setValue(resposta.id);
     this.formulario.controls['telefone'].setValue(resposta.telefone);
+    this.formulario.controls['email'].setValue(resposta.email);
+    this.formulario.controls['senha'].setValue(resposta.senha);
   }
 
   onSubmit(): void {
     this.formulario.value.nome = this.formulario.value.nome.toUpperCase()
-    
+    this.formulario.value.email = this.formulario.value.email.toLowerCase()
+
     this.service.update(this.formulario.value).subscribe(
       (resposta) => {
         this.router.navigate(['clientes'])
@@ -97,6 +102,23 @@ export class ClienteUpdateComponent implements OnInit {
       return 'CPF é obrigatorio.'
     }
     return null
+  }
+
+  getErrorMessageEmail() {
+    if (this.formulario.get('email')!.hasError('required')) {
+      return 'E-mail é obrigatorio.'
+    }
+      return null
+  }
+
+  getErrorMessageSenha() {
+    if (this.formulario.get('senha')!.hasError('required')) {
+      return 'Senha é obrigatorio.'
+    }
+    if (this.formulario.get('senha')!.errors?.['minlength']) {
+      return 'Senha deve ter no min 6 caracteres e max 11.'
+    }
+      return null
   }
 
 }

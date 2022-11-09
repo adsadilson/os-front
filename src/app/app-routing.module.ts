@@ -1,3 +1,4 @@
+import { SidenavComponent } from './views/components/template/sidenav/sidenav/sidenav.component';
 import { AuthGuard } from './auth/auth.guard';
 import { LoginAngularComponent } from './views/components/template/login/login-angular/login-angular.component';
 import { NavComponent } from './views/components/template/nav/nav.component';
@@ -14,19 +15,16 @@ import { OrdemServicoReadComponent } from './views/components/os/ordem-servico-r
 import { LoginComponent } from './views/components/template/login/login/login.component';
 
 const routes: Routes = [
-  { path: "login-2", component:LoginComponent},
   { path: "login", component:LoginAngularComponent},
-  { path: "", component: NavComponent, canActivate: [AuthGuard], children:[
-      { path: "home", component: HomeComponent},
-      { path: "tecnicos", component: TecnicoReadComponent},
-      { path: "tecnicos/create", component: TecnicoCreateComponent},
-      { path: "tecnicos/update/:id", component: TecnicoUpdateComponent},
-      { path: "clientes", component: ClienteReadComponent},
-      { path: "clientes/create", component: ClienteCreateComponent},
-      { path: "clientes/update/:id", component: ClienteUpdateComponent},
-      { path: "ordem-servicos", component: OrdemServicoReadComponent}
-    ] 
-  },
+  { path: "", redirectTo: 'home', pathMatch: 'full'},
+  { path: "home", component: HomeComponent},
+  { path: "tecnicos", component: TecnicoReadComponent},
+  { path: "tecnicos/create", component: TecnicoCreateComponent},
+  { path: "tecnicos/update/:id", component: TecnicoUpdateComponent},
+  { path: "clientes", component: ClienteReadComponent},
+  { path: "clientes/create", component: ClienteCreateComponent},
+  { path: "clientes/update/:id", component: ClienteUpdateComponent},
+  { path: "ordem-servicos", component: OrdemServicoReadComponent}
   
 ];
 
