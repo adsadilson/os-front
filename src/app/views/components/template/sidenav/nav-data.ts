@@ -1,27 +1,27 @@
 export const navBarData =[
     {
         routerLink: 'home',
-        icon: 'home',
+        icon: 'fa fa-home',
         label: 'Home'
     },
     {
         routerLink: 'tecnicos',
-        icon: 'work',
+        icon: 'fa fa-user',
         label: 'Técnico'
     },
     {
         routerLink: 'clientes',
-        icon: 'person_search',
+        icon: 'fa fa-users',
         label: 'Cliente'
     },
     {
         routerLink: 'ordem-servicos',
-        icon: 'person_pin',
+        icon: 'fa fa-server',
         label: 'Chamado(s)'
     },
     {
         routerLink: '',
-        icon: 'logout',
+        icon: 'fa fa-power-off',
         label: 'Sair'
     },
 

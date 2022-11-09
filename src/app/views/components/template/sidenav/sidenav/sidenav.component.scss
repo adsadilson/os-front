@@ -78,7 +78,7 @@
             border-radius: 0.625rem;
             transition: all .3s ease;
     
-            .material-icons{
+            .sidenav-link-icon{
                 font-size: 22px;
                 width: 2rem;
                 min-width: 2rem;
@@ -104,7 +104,7 @@
 .active{
     background-color: #9172b9;
 
-    .material-icons,
+    .sidenav-link-icon,
     .sidenav-link-text{
         color: #fff;
     }
