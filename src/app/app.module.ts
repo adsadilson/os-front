@@ -33,12 +33,13 @@ import { LoginAngularComponent } from './views/components/template/login/login-a
 import { ToastrModule } from 'ngx-toastr';
 import { SidenavComponent } from './views/components/template/sidenav/sidenav/sidenav.component';
 import { BodyComponent } from './views/components/template/body/body.component';
+import { Home2Component } from './views/components/template/home2/home2.component';
 
 
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent, NavComponent, HomeComponent, TecnicoReadComponent, TecnicoCreateComponent, CpfPipe, 
-    TecnicoUpdateComponent, DialogExclusaoComponent, ClienteReadComponent, ClienteCreateComponent, ClienteUpdateComponent, OrdemServicoReadComponent, OrdemServicoDialogCreateComponent, LoginComponent, LoginAngularComponent, SidenavComponent, BodyComponent],
+    TecnicoUpdateComponent, DialogExclusaoComponent, ClienteReadComponent, ClienteCreateComponent, ClienteUpdateComponent, OrdemServicoReadComponent, OrdemServicoDialogCreateComponent, LoginComponent, LoginAngularComponent, SidenavComponent, BodyComponent, Home2Component],
   imports: [
     BrowserModule,
     AppRoutingModule,

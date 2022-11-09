@@ -19,10 +19,5 @@ export const navBarData =[
         icon: 'fa fa-server',
         label: 'Chamado(s)'
     },
-    {
-        routerLink: '',
-        icon: 'fa fa-power-off',
-        label: 'Sair'
-    },
-
+    
 ]

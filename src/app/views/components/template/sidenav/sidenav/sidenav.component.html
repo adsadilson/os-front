@@ -2,9 +2,6 @@
     <div class="logo-container">
         <button class="logo" (click)="toggleCollapse()">A</button>
         <div class="logo-text" *ngIf="collapsed">Apssystem</div>
-        <button class="btn-close" *ngIf="collapsed">
-            <i class="fal fa-times close-icon"></i>
-        </button>
     </div>
     <ul class="sidenav-nav">
         <li class="sidenav-nav-item" *ngFor="let data of navData">
@@ -14,6 +11,12 @@
             >
                 <i class="sidenav-link-icon" [class]="data.icon"></i>
                 <span class="sidenav-link-text" *ngIf="collapsed">{{data.label}}</span>
+            </a>
+        </li>
+        <li class="sidenav-nav-item">
+            <a class="sidenav-nav-link" (click)="logout()">
+                <i class="sidenav-link-icon fa fa-power-off"></i>
+                <span class="sidenav-link-text" *ngIf="collapsed">Logout</span>
             </a>
         </li>
         
